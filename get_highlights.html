@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-slate-900 text-white content-center mx-5 my-5">
+    <h1 class="text-5xl mx-5 my-5">Welcome to Kindle Highlights Fetcher!</h1>
+    <form action="http://localhost:8000/gethigh" method="POST">
+      <label class="text-white text-xl mx-5 my-5" for="email">Email</label>
+      <input class="mx-5 my-5 p-2.5 w-1/4 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="email" id="email" type="email" placeholder="Your email address">
+
+      <button type="submit" class=" block mx-5 my-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">show my highlights!</button>
+    </form>
+    
+    {{if .}}
+    <div class="relative overflow-x-auto">
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <th scope="col" class="px-6 py-3">Title</th>
+          <th scope="col" class="px-6 py-3">Author</th>
+          <th scope="col" class="px-6 py-3">Quote</th>
+          <!-- <th scope="col" class="px-6 py-3">Location</th>
+          <th scope="col" class="px-6 py-3">Time</th> -->
+        </thead>
+        {{range $key, $val := .}}
+          {{range $quote := $val.QuoteList}}
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$key}}</th>
+              <td class="px-6 py-4">{{$val.Author}}</td>
+              <td class="px-6 py-4">{{$quote.Text}}</td>
+              <!-- <td class="px-6 py-4">{{$quote.Location}}</td>
+              <td class="px-6 py-4">{{$quote.TimeAdded}}</td> -->
+            </tr>
+          {{end}}
+        {{end}}
+      </table>
+    </div>
+    {{end}}
+  </body>
+</html>
