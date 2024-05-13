@@ -63,6 +63,12 @@ func Parser(wholeText string) map[string]Bookdata {
 					ParsedData[title] = val
 				} else {
 					var data Bookdata
+
+					// Clean Byte Order Mark (BOM) from title string.
+					// I feel BOM can only appear in the title, because this is the first thing that is parsed
+					if strings.HasPrefix(title, string("\uFEFF")) {
+						title = strings.TrimPrefix(title, string("\uFEFF"))
+					}
 					data.Title = title
 					data.Author = author
 					data.QuoteList = append(data.QuoteList, structuredQuote)

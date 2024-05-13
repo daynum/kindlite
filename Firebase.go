@@ -65,3 +65,17 @@ func (fc *FirebaseClient) Read(email string) map[string]Bookdata {
 	fmt.Printf("RETURNED RESULT: %v\n", result)
 	return result
 }
+
+// FROM Handlers.go
+
+//client := &FirebaseClient{credsFile: "/home/sharpfox/.keys/kindle-highlights-4116d-2d1ab71a0842.json"}
+//client.Client()
+
+//client.AddToEmail(email, book_map)
+
+// ---
+
+//client := &FirebaseClient{credsFile: "/home/sharpfox/.keys/kindle-highlights-4116d-2d1ab71a0842.json"}
+//client.Client()
+
+// user_data := client.Read(email)

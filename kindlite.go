@@ -8,8 +8,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", indexPage)
-	http.HandleFunc("/process", processPage)
-	http.HandleFunc("/gethigh", getHighlights)
+	http.HandleFunc("/show", getHighlights)
 	fs := http.FileServer(http.Dir("resources"))
 	http.Handle("/resources/", http.StripPrefix("/resources/", fs))
 	fmt.Println("Server starting at: http://localhost:8000")

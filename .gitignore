@@ -22,4 +22,7 @@ go.work
 
 kindlite
 *.txt
+.env
 
+# JSON email files
+.*@.*\..*\.json

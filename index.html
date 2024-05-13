@@ -2,10 +2,11 @@
 <html>
   <head>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="resources/loader.css">
   </head>
   <body class="bg-slate-900 text-white content-center mx-5 my-5">
     <h1 class="text-5xl">Welcome to Kindlite.</h1>
-    <form action="http://localhost:8000/process" method="POST">
+    <form action="." method="POST">
       <label class="text-white text-xl mx-5 my-5" for="email">Email</label>
       <input class="mx-5 my-5 p-2.5 w-1/4 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="email" id="email" type="email" placeholder="Your email address">
 
@@ -19,10 +20,17 @@
       <label for="highlight-text"></label>
       <textarea id="highlight-text" name="highlight-text" rows="15" class=" mx-5 my-5 p-2.5 w-1/2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your highlights will appear here..."  readonly required></textarea>
 
-      <button type="submit" class=" block mx-5 my-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Save Highlights!</button>
+      <button type="submit" class=" block mx-5 my-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" onclick="loader()">Save Highlights!</button>
     </form>
+
+    <div id="loader"></div>
     
     <script type="text/javascript" src="resources/file_upload.js" ></script>
-  </body>
 
+    {{if eq . "SUCCESS"}}
+      <p> SAVING DATA DONE !!!</p>
+    {{else if eq . "FAILURE"}}
+      <p> SAVING DATA FAILED </p>
+    {{end}}
+  </body>
 </html>

@@ -20,3 +20,8 @@ function filePreview(){
     reader.readAsText(file)
   }
 }
+
+function loader(){
+  const loader_div = document.querySelector("#loader");
+  loader_div.classList.add("display")
+}
